@@ -21,6 +21,12 @@ public class MealTo {
         this.excess = excess;
     }
 
+    public MealTo(LocalDateTime dateTime, String description, int calories) {
+        this.dateTime = dateTime;
+        this.description = description;
+        this.calories = calories;
+    }
+
 //    for filteredByClosure
 //    public Boolean getExcess() {
 //        return excess.get();
