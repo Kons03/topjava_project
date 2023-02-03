@@ -170,7 +170,7 @@ public class MealsUtil {
         }.run();
         return mealsTo;
     }
-    
+
     /*
         private static List<MealTo> filteredByAtomic(List<Meal> meals, LocalTime startTime, LocalTime endTime, int caloriesPerDay) {
             Map<LocalDate, Integer> caloriesSumByDate = new HashMap<>();
