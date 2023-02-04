@@ -1,41 +1,42 @@
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<%@ page contentType="text/html;charset=UTF-8" %>
+<%@ taglib prefix="fn" uri="http://topjava.javawebinar.ru/functions" %>
 
-<html lang="en">
-
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>Meals</title>
-
-    <style>table th, table td {
-        padding: 15px;
-    }</style>
-
+    <title>Meal list</title>
+    <style>
+        .normal {
+            color: green;
+        }
+        .excess {
+            color: red;
+        }
+    </style>
 </head>
-
-<body bgcolor="#FFFFFF">
-<h1>Meals List</h1>
-
-<table border = "1">
-
-    <tr>
-        <th>Data</th>
-        <th>Description</th>
-        <th>Calories</th>
-        </td>
-    </tr>
-
-    <th:block th:each = "meals : ${Meals}">
-
+<body>
+<section>
+    <h3><a href="index.html">Home</a></h3>
+    <hr/>
+    <h2>Meals</h2>
+    <table border="1" cellpadding="8" cellspacing="0">
+        <thead>
         <tr>
-            <td bgcolor="#00FF66" th:text = "${mealToList.getModel()}"></td>
-            <td bgcolor="#FF0000" th:text = "${car.getSeries()}"></td>
-            <td bgcolor="#008080" th:text = "${car.getColor()}"></td>
+            <th>Date</th>
+            <th>Description</th>
+            <th>Calories</th>
         </tr>
-
-    </th:block>
-
-</table>
-
+        </thead>
+        <c:forEach items="${requestScope.meals}" var="meal">
+            <%--            <jsp:useBean id="meals" scope = "page" type="ru.javawebinar.topjava.model.MealTo"/>--%>
+            <tr class="${meal.excess ? 'excess' : 'normal'}">
+                <td>
+                        ${fn:formatDateTime(meal.dateTime)}
+                </td>
+                <td>${meal.description}</td>
+                <td>${meal.calories}</td>
+            </tr>
+        </c:forEach>
+    </table>
+</section>
 </body>
 </html>
